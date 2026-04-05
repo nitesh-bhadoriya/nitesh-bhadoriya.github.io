@@ -3,414 +3,620 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nitesh Singh Bhadoriya — AI & GeoAI Engineer</title>
+<title>Nitesh Singh Bhadoriya — AI & ML Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:       #F6F1E9;
-  --bg2:      #EDE7D8;
-  --card:     #FDFAF5;
-  --border:   #DDD5BE;
-  --green:    #2A4A2C;
-  --gmid:     #3D6640;
-  --glt:      #DCE9DC;
-  --terra:    #9B4A28;
-  --tlt:      #F3DDD4;
-  --sand:     #B08848;
-  --slt:      #F0E5CC;
-  --text:     #1A1510;
-  --t2:       #44392A;
-  --muted:    #72634E;
-  --cream:    #FDFAF5;
+  --white:   #FFFFFF;
+  --off:     #F8F8F6;
+  --light:   #F0EEE9;
+  --border:  #E2DED6;
+  --border2: #C8C4BC;
+  --ink:     #111110;
+  --ink2:    #3A3830;
+  --muted:   #7A7770;
+  --green:   #1B4332;
+  --g2:      #2D6A4F;
+  --glt:     #D8F3DC;
+  --gtxt:    #1B4332;
+  --accent:  #2D6A4F;
+  --tag-bg:  #EAF4ED;
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Sora', sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  background: var(--white);
+  color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* NAV */
+/* ── NAV ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0.85rem 5rem;
-  background: rgba(246,241,233,0.96);
-  backdrop-filter: blur(14px);
+  padding: 0 3rem;
+  height: 60px;
+  background: rgba(255,255,255,0.97);
   border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-size: 0.9rem; font-weight: 700; color: var(--green); text-decoration: none; letter-spacing: -0.01em; }
+.nav-logo { font-size: 0.88rem; font-weight: 800; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a { font-size: 0.75rem; font-weight: 400; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--green); }
-.nav-cv {
-  font-size: 0.72rem; font-weight: 600; color: var(--cream);
-  background: var(--green); padding: 0.5rem 1.2rem;
-  text-decoration: none; border-radius: 6px;
+.nav-links a { font-size: 0.78rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  font-size: 0.75rem; font-weight: 700; color: var(--white);
+  background: var(--green); padding: 0.45rem 1.1rem;
+  text-decoration: none; border-radius: 6px; letter-spacing: 0.01em;
   display: flex; align-items: center; gap: 0.35rem;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.15s, transform 0.15s;
 }
-.nav-cv:hover { background: var(--gmid); transform: translateY(-1px); }
-.nav-cv svg { width: 12px; height: 12px; }
+.nav-cta:hover { background: var(--g2); transform: translateY(-1px); }
+.nav-cta svg { width: 11px; height: 11px; }
 
-/* HERO */
+/* ── HERO ── */
 #hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding: 7rem 5rem 4rem; max-width: 1140px; margin: 0 auto;
-}
-.hero-inner { width: 100%; }
-
-.hero-kicker {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: 'DM Mono', monospace; font-size: 0.62rem;
-  color: var(--terra); letter-spacing: 0.16em; text-transform: uppercase;
-  margin-bottom: 1.4rem;
-  opacity: 0; animation: rise 0.6s ease forwards 0.1s;
-}
-.kicker-dot { width: 6px; height: 6px; background: var(--terra); border-radius: 50%; }
-
-.hero-h1 {
-  font-size: clamp(3.2rem, 7vw, 5.8rem);
-  font-weight: 800; line-height: 1.0; letter-spacing: -0.035em;
-  color: var(--text); margin-bottom: 1.8rem;
-  opacity: 0; animation: rise 0.65s ease forwards 0.25s;
-}
-.hero-h1 .accent { color: var(--green); font-style: italic; font-weight: 300; }
-
-.hero-stats {
-  display: flex; flex-wrap: wrap;
-  border: 1px solid var(--border); border-radius: 10px;
-  overflow: hidden; background: var(--card); max-width: 680px;
-  margin-bottom: 2.4rem;
-  opacity: 0; animation: rise 0.65s ease forwards 0.4s;
-}
-.stat-box {
-  flex: 1; padding: 1.1rem 1.4rem;
-  border-right: 1px solid var(--border); min-width: 120px;
-}
-.stat-box:last-child { border-right: none; }
-.stat-num {
-  font-size: 1.9rem; font-weight: 800; color: var(--green);
-  line-height: 1; letter-spacing: -0.04em; display: block;
-}
-.stat-lbl {
-  font-family: 'DM Mono', monospace; font-size: 0.58rem;
-  color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
-  margin-top: 0.25rem; display: block;
+  min-height: 100vh;
+  padding: 60px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.hero-actions {
-  display: flex; gap: 0.75rem; flex-wrap: wrap;
-  opacity: 0; animation: rise 0.65s ease forwards 0.55s;
+.hero-left {
+  padding: 5rem 3rem 5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--border);
 }
-.btn-solid {
+
+/* Role badge — this is what they see first */
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.38rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  width: fit-content;
+  opacity: 0;
+  animation: up 0.5s ease forwards 0.1s;
+}
+.role-badge .dot {
+  width: 6px; height: 6px;
+  background: #4ADE80;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+/* THE headline — super clear, light bg = dark text pops */
+.hero-name {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  opacity: 0;
+  animation: up 0.5s ease forwards 0.2s;
+}
+
+.hero-tagline {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1.3;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: up 0.5s ease forwards 0.3s;
+}
+
+.hero-desc {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-weight: 400;
+  max-width: 480px;
+  margin-bottom: 2.2rem;
+  opacity: 0;
+  animation: up 0.5s ease forwards 0.4s;
+}
+
+.hero-btns {
+  display: flex; gap: 0.7rem; flex-wrap: wrap;
+  opacity: 0; animation: up 0.5s ease forwards 0.5s;
+}
+.btn-primary {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.8rem 1.7rem; background: var(--green); color: var(--cream);
-  font-size: 0.8rem; font-weight: 600; text-decoration: none; border-radius: 8px;
-  transition: background 0.2s, transform 0.15s;
+  padding: 0.75rem 1.5rem;
+  background: var(--green); color: #fff;
+  font-size: 0.82rem; font-weight: 700;
+  text-decoration: none; border-radius: 8px;
+  transition: background 0.15s, transform 0.15s;
 }
-.btn-solid:hover { background: var(--gmid); transform: translateY(-2px); }
-.btn-ghost {
+.btn-primary:hover { background: var(--g2); transform: translateY(-2px); }
+.btn-secondary {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.8rem 1.7rem; border: 1.5px solid var(--border); color: var(--t2);
-  font-size: 0.8rem; font-weight: 500; text-decoration: none; border-radius: 8px;
-  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  padding: 0.75rem 1.5rem;
+  background: var(--off); color: var(--ink2);
+  border: 1px solid var(--border2);
+  font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; border-radius: 8px;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
 }
-.btn-ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+.btn-secondary:hover { background: var(--light); border-color: var(--green); transform: translateY(-2px); }
 
-/* SECTIONS */
-.wrap { max-width: 1140px; margin: 0 auto; padding: 5rem 5rem; }
-.sec-label {
-  font-family: 'DM Mono', monospace; font-size: 0.58rem;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.4rem;
+/* Hero RIGHT — stats panel */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2.5rem;
+  gap: 0;
+  opacity: 0;
+  animation: up 0.6s ease forwards 0.55s;
 }
-.sec-title {
-  font-size: clamp(1.7rem, 2.8vw, 2.2rem); font-weight: 800;
-  letter-spacing: -0.03em; color: var(--text); line-height: 1.1; margin-bottom: 2.6rem;
-}
-.rule { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 5rem; }
 
-/* PROJECTS */
-.proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+.stats-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.stat-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.stat-item:first-of-type { border-top: 1px solid var(--border); }
+
+.stat-big {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--green);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.stat-desc {
+  font-size: 0.78rem;
+  color: var(--ink2);
+  font-weight: 500;
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+.stat-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.hero-links {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.hero-link {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 500; color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.hero-link:hover { color: var(--green); }
+.hero-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ── SHARED ── */
+.section { max-width: 1200px; margin: 0 auto; padding: 5.5rem 3rem; }
+.section-alt { background: var(--off); }
+
+.s-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+.s-title {
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-weight: 900; letter-spacing: -0.03em;
+  color: var(--ink); line-height: 1.1;
+  margin-bottom: 2.8rem;
+}
+
+.hr { height: 1px; background: var(--border); }
+
+/* ── PROJECTS ── */
+.proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+
 .proj-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.8rem; position: relative;
-  transition: transform 0.25s, box-shadow 0.25s; overflow: hidden;
+  background: var(--white);
+  padding: 2rem;
+  transition: background 0.2s;
+  position: relative;
 }
-.proj-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--green); transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s ease; border-radius: 12px 12px 0 0;
-}
-.proj-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(26,21,16,0.10); }
-.proj-card:hover::before { transform: scaleX(1); }
-.proj-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-.proj-badge {
+.proj-card:hover { background: var(--off); }
+
+.p-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
+.p-badge {
   font-family: 'DM Mono', monospace; font-size: 0.55rem;
-  letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 4px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.22rem 0.65rem; border-radius: 3px; font-weight: 500;
 }
-.bg { background: var(--glt); color: var(--green); }
-.bt { background: var(--tlt); color: var(--terra); }
-.bs { background: var(--slt); color: #7A5820; }
-.proj-status { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); text-align: right; }
-.proj-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.6rem; line-height: 1.2; }
-.proj-desc { font-size: 0.77rem; color: var(--t2); line-height: 1.75; font-weight: 300; margin-bottom: 0.9rem; }
-.proj-result {
-  background: var(--glt); border-left: 3px solid var(--green);
-  padding: 0.55rem 0.85rem; font-size: 0.73rem; color: var(--green);
-  font-weight: 600; line-height: 1.55; margin-bottom: 1rem;
-}
-.proj-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.1rem; }
-.pill {
-  font-family: 'DM Mono', monospace; font-size: 0.56rem; color: var(--muted);
-  background: var(--bg2); border: 1px solid var(--border);
-  padding: 0.18rem 0.5rem; border-radius: 4px;
-}
-.proj-link {
-  font-size: 0.73rem; font-weight: 600; color: var(--green); text-decoration: none;
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  border-bottom: 1.5px solid var(--glt); padding-bottom: 1px;
-  transition: border-color 0.2s, gap 0.2s;
-}
-.proj-link:hover { border-color: var(--green); gap: 0.5rem; }
+.p-green { background: var(--glt); color: var(--gtxt); }
+.p-terra { background: #FDE8DB; color: #8B3A18; }
+.p-sand  { background: #FDF3DC; color: #6B5000; }
+.p-status { font-family: 'DM Mono', monospace; font-size: 0.57rem; color: var(--muted); }
 
-/* SKILLS */
-.skills-wrap { background: var(--bg2); }
-.sk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.sk-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.3rem; }
-.sk-label {
+.p-title { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 0.55rem; line-height: 1.2; }
+.p-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.75; margin-bottom: 0.9rem; }
+
+.p-result {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  background: var(--glt); border-radius: 6px;
+  padding: 0.6rem 0.8rem; margin-bottom: 1rem;
+}
+.p-result-icon { font-size: 0.75rem; flex-shrink: 0; margin-top: 0.05rem; }
+.p-result-text { font-size: 0.73rem; color: var(--gtxt); font-weight: 700; line-height: 1.5; }
+
+.p-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.1rem; }
+.p-tag {
+  font-family: 'DM Mono', monospace; font-size: 0.55rem;
+  color: var(--ink2); background: var(--light);
+  border: 1px solid var(--border); padding: 0.16rem 0.48rem; border-radius: 3px;
+}
+
+.p-link {
+  font-size: 0.74rem; font-weight: 700; color: var(--green);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;
+  transition: gap 0.15s;
+}
+.p-link:hover { gap: 0.5rem; }
+
+/* ── SKILLS ── */
+.sk-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.sk-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; }
+.sk-head {
   font-family: 'DM Mono', monospace; font-size: 0.57rem;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra);
-  margin-bottom: 0.8rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 0.9rem; font-weight: 500;
 }
-.sk-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-.sk-tag {
-  font-size: 0.71rem; color: var(--t2); background: var(--bg);
-  border: 1px solid var(--border); padding: 0.22rem 0.6rem; border-radius: 4px;
-  font-weight: 400; transition: background 0.15s, border-color 0.15s, color 0.15s;
+.sk-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.sk-chip {
+  font-size: 0.73rem; color: var(--ink2);
+  background: var(--off); border: 1px solid var(--border);
+  padding: 0.24rem 0.65rem; border-radius: 100px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-.sk-tag:hover { background: var(--glt); border-color: var(--green); color: var(--green); }
+.sk-chip:hover { background: var(--glt); color: var(--green); border-color: var(--accent); }
 
-/* EXPERIENCE */
+/* ── EXPERIENCE ── */
 .exp-list { display: flex; flex-direction: column; }
 .exp-row {
-  display: grid; grid-template-columns: 185px 1fr; gap: 3rem;
-  padding: 2.2rem 0; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 170px 1fr;
+  gap: 2.5rem; padding: 2.2rem 0;
+  border-bottom: 1px solid var(--border);
 }
 .exp-row:first-child { padding-top: 0; }
 .exp-row:last-child { border-bottom: none; }
-.exp-period { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--terra); display: block; margin-bottom: 0.3rem; }
-.exp-co { font-size: 0.78rem; font-weight: 600; color: var(--text); display: block; margin-bottom: 0.15rem; }
-.exp-loc { font-size: 0.68rem; color: var(--muted); }
-.exp-role { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.8rem; }
+.exp-when { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); display: block; margin-bottom: 0.25rem; }
+.exp-where { font-size: 0.8rem; font-weight: 700; color: var(--ink); display: block; margin-bottom: 0.1rem; }
+.exp-place { font-size: 0.68rem; color: var(--muted); }
+.exp-role { font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.75rem; }
 .exp-pts { display: flex; flex-direction: column; gap: 0.4rem; }
 .exp-pt {
-  font-size: 0.78rem; color: var(--t2); line-height: 1.7; font-weight: 300;
+  font-size: 0.78rem; color: var(--ink2); line-height: 1.7;
   padding-left: 1rem; position: relative;
 }
 .exp-pt::before {
   content: ''; position: absolute; left: 0; top: 0.52rem;
-  width: 4px; height: 4px; border-radius: 50%; background: var(--sand);
+  width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
 }
 
-/* CONTACT */
-.contact-wrap { background: var(--green); }
-.contact-wrap .sec-label { color: rgba(255,255,255,0.45); }
-.contact-wrap .sec-title { color: #fff; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-.contact-desc { font-size: 0.86rem; color: rgba(255,255,255,0.62); line-height: 1.9; font-weight: 300; margin-bottom: 1.6rem; }
-.contact-list { display: flex; flex-direction: column; gap: 0.65rem; }
-.contact-item {
-  display: flex; align-items: center; gap: 0.85rem;
-  padding: 0.85rem 1.1rem;
-  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.11);
+/* ── CONTACT ── */
+.contact-section { background: var(--ink); }
+.contact-section .s-eyebrow { color: rgba(255,255,255,0.35); }
+.contact-section .s-title { color: #fff; }
+
+.c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.c-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.9; margin-bottom: 1.8rem; }
+.c-links { display: flex; flex-direction: column; gap: 0.65rem; }
+.c-link {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.9rem 1.1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 10px; text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.15s, transform 0.15s;
 }
-.contact-item:hover { background: rgba(255,255,255,0.13); transform: translateX(4px); }
-.contact-icon {
-  width: 32px; height: 32px; background: rgba(255,255,255,0.1);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.contact-icon svg { width: 14px; height: 14px; stroke: rgba(255,255,255,0.8); }
-.ci-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; display: block; }
-.ci-val { font-size: 0.8rem; color: rgba(255,255,255,0.9); font-weight: 500; display: block; margin-top: 0.1rem; }
-.cv-card { background: var(--card); border-radius: 12px; padding: 1.8rem; }
-.cv-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.4rem; }
-.cv-desc { font-size: 0.76rem; color: var(--t2); line-height: 1.7; font-weight: 300; margin-bottom: 1rem; }
-.cv-items { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1.3rem; }
-.cv-item { font-size: 0.73rem; color: var(--t2); display: flex; align-items: center; gap: 0.5rem; }
-.cv-item::before { content: ''; width: 5px; height: 5px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
-.cv-btn {
-  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-  padding: 0.85rem; background: var(--green); color: var(--cream);
-  font-size: 0.8rem; font-weight: 600; text-decoration: none; border-radius: 8px;
-  transition: background 0.2s, transform 0.15s;
-}
-.cv-btn:hover { background: var(--gmid); transform: translateY(-2px); }
-.cv-btn svg { width: 14px; height: 14px; stroke: currentColor; }
+.c-link:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
+.c-icon { width: 34px; height: 34px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.c-icon svg { width: 14px; height: 14px; stroke: rgba(255,255,255,0.7); }
+.c-lbl { font-family: 'DM Mono', monospace; font-size: 0.57rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; display: block; }
+.c-val { font-size: 0.82rem; color: rgba(255,255,255,0.88); font-weight: 600; display: block; margin-top: 0.1rem; }
 
-/* FOOTER */
+.cv-panel { background: var(--white); border-radius: 12px; padding: 2rem; }
+.cv-panel-title { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.4rem; }
+.cv-panel-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.1rem; }
+.cv-list { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1.4rem; }
+.cv-li { font-size: 0.73rem; color: var(--ink2); display: flex; align-items: center; gap: 0.5rem; }
+.cv-li::before { content: ''; width: 5px; height: 5px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+.cv-dl {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.88rem; background: var(--green); color: #fff;
+  font-size: 0.82rem; font-weight: 700; text-decoration: none; border-radius: 8px;
+  transition: background 0.15s, transform 0.15s;
+}
+.cv-dl:hover { background: var(--g2); transform: translateY(-2px); }
+.cv-dl svg { width: 14px; height: 14px; stroke: currentColor; }
+
+/* ── FOOTER ── */
 footer {
-  background: var(--text); padding: 1.3rem 5rem;
+  background: #0A0A09; padding: 1.2rem 3rem;
   display: flex; align-items: center; justify-content: space-between;
 }
-.f-name { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.4); }
-.f-links { display: flex; gap: 1.3rem; }
-.f-link { font-size: 0.68rem; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.2s; }
-.f-link:hover { color: rgba(255,255,255,0.65); }
+.f-n { font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.3); }
+.f-ls { display: flex; gap: 1.3rem; }
+.f-l { font-size: 0.68rem; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.15s; }
+.f-l:hover { color: rgba(255,255,255,0.6); }
 
-@keyframes rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
-.reveal { opacity:0; transform:translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+/* ── ANIMATION ── */
+@keyframes up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+.reveal { opacity:0; transform:translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
 .reveal.in { opacity:1; transform:none; }
 
-@media (max-width: 860px) {
-  nav { padding: 0.85rem 1.4rem; }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 1.4rem; }
   .nav-links { display: none; }
-  #hero { padding: 6.5rem 1.4rem 3.5rem; }
-  .wrap { padding: 3.5rem 1.4rem; }
-  .rule { margin: 0 1.4rem; }
+  #hero { grid-template-columns: 1fr; padding-top: 60px; }
+  .hero-left { padding: 3rem 1.4rem; border-right: none; border-bottom: 1px solid var(--border); }
+  .hero-right { padding: 2.5rem 1.4rem; }
+  .section { padding: 3.5rem 1.4rem; }
   .proj-grid { grid-template-columns: 1fr; }
-  .sk-grid { grid-template-columns: repeat(2, 1fr); }
+  .sk-grid { grid-template-columns: repeat(2,1fr); }
   .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
-  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-  footer { flex-direction: column; gap: 0.8rem; padding: 1.4rem; text-align: center; }
-  .hero-stats { max-width: 100%; }
-  .stat-num { font-size: 1.5rem; }
+  .c-grid { grid-template-columns: 1fr; gap: 2rem; }
+  footer { flex-direction: column; gap: 0.8rem; padding: 1.3rem; text-align: center; }
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">Nitesh S. Bhadoriya</a>
+  <a class="nav-logo" href="#">Nitesh Singh Bhadoriya</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://drive.google.com/file/d/1Ir9z8MPeFtudnD7okVRbF8rJ6qpm5BTQ/view?usp=sharing" target="_blank" class="nav-cv">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  <a href="https://drive.google.com/file/d/1Ir9z8MPeFtudnD7okVRbF8rJ6qpm5BTQ/view?usp=sharing" target="_blank" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download CV
   </a>
 </nav>
 
-<section><div id="hero"><div class="hero-inner">
-  <div class="hero-kicker"><span class="kicker-dot"></span>AI &amp; ML Engineer &nbsp;·&nbsp; Bhopal, MP</div>
-  <h1 class="hero-h1">Turning <span class="accent">satellite data</span><br>into real-world<br>decisions.</h1>
-  <div class="hero-stats">
-    <div class="stat-box"><span class="stat-num">93%</span><span class="stat-lbl">F1-Score · YOLOv8</span></div>
-    <div class="stat-box"><span class="stat-num">55</span><span class="stat-lbl">Districts Deployed</span></div>
-    <div class="stat-box"><span class="stat-num">3K+</span><span class="stat-lbl">Annotated Tiles</span></div>
-    <div class="stat-box"><span class="stat-num">4</span><span class="stat-lbl">Live Systems</span></div>
-  </div>
-  <div class="hero-actions">
-    <a href="#projects" class="btn-solid">View My Work</a>
-    <a href="https://drive.google.com/file/d/1Ir9z8MPeFtudnD7okVRbF8rJ6qpm5BTQ/view?usp=sharing" target="_blank" class="btn-ghost">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download CV
-    </a>
-    <a href="#contact" class="btn-ghost">Get in Touch</a>
-  </div>
-</div></div></section>
+<!-- HERO -->
+<div id="hero">
+  <!-- LEFT -->
+  <div class="hero-left">
+    <!-- Role highlighted first -->
+    <div class="role-badge">
+      <span class="dot"></span>
+      AI &amp; ML Engineer
+    </div>
 
-<div class="rule"></div>
+    <!-- Name big and clear -->
+    <div class="hero-name">Nitesh Singh<br>Bhadoriya</div>
 
-<section id="projects"><div class="wrap">
-  <div class="reveal"><div class="sec-label">Work</div><div class="sec-title">Production Projects</div></div>
+    <!-- Tagline in italic serif — readable, elegant -->
+    <div class="hero-tagline">Turning satellite data<br>into real-world decisions.</div>
+
+    <p class="hero-desc">
+      Building computer vision and machine learning systems for geospatial intelligence —
+      deployed at state scale for the Government of Madhya Pradesh.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="https://drive.google.com/file/d/1Ir9z8MPeFtudnD7okVRbF8rJ6qpm5BTQ/view?usp=sharing" target="_blank" class="btn-secondary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV
+      </a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- RIGHT — stats -->
+  <div class="hero-right">
+    <div class="stats-label">Impact at a glance</div>
+
+    <div class="stat-item">
+      <div class="stat-big">93%</div>
+      <div class="stat-desc">F1-Score achieved</div>
+      <span class="stat-sub">YOLOv8 · Dugwell Detection</span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-big">55</div>
+      <div class="stat-desc">Districts deployed</div>
+      <span class="stat-sub">Madhya Pradesh · MGNREGA</span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-big">3K+</div>
+      <div class="stat-desc">Annotated satellite tiles</div>
+      <span class="stat-sub">WorldView 0.3m · Roboflow</span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-big">4</div>
+      <div class="stat-desc">Production GeoAI systems</div>
+      <span class="stat-sub">Live at MPSEDC, Govt. MP</span>
+    </div>
+
+    <div class="hero-links">
+      <a href="https://github.com/nitesh-bhadoriya" target="_blank" class="hero-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        github.com/nitesh-bhadoriya
+      </a>
+      <a href="https://www.linkedin.com/in/nitesh-singh-bhadoriya-917411226" target="_blank" class="hero-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        Nitesh Singh Bhadoriya
+      </a>
+      <a href="mailto:niteshbhadoriya93@gmail.com" class="hero-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        niteshbhadoriya93@gmail.com
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+<div class="section">
+  <div class="reveal">
+    <div class="s-eyebrow">Work</div>
+    <div class="s-title">Production Projects</div>
+  </div>
   <div class="proj-grid">
 
     <div class="proj-card reveal">
-      <div class="proj-top">
-        <span class="proj-badge bg">Computer Vision</span>
-        <span class="proj-status">Deployed · 55 Districts</span>
+      <div class="p-top">
+        <span class="p-badge p-green">Computer Vision</span>
+        <span class="p-status">Deployed · 55 Districts</span>
       </div>
-      <div class="proj-title">Dugwell Detection — MGNREGA MP</div>
-      <div class="proj-desc">MGNREGA needed a complete state-wide inventory of dugwells across Madhya Pradesh for water conservation. Manual identification at this scale from satellite imagery was not feasible.</div>
-      <div class="proj-result">93% F1-score · YOLOv8 on 3,000+ annotated WorldView tiles · All 55 MP districts · Auto-generated shapefiles per district</div>
-      <div class="proj-pills"><span class="pill">YOLOv8</span><span class="pill">WorldView 0.3m</span><span class="pill">Roboflow</span><span class="pill">GDAL</span><span class="pill">GeoPandas</span><span class="pill">Python</span></div>
-      <a href="https://github.com/nitesh-bhadoriya/dugwell-detection-yolov8" target="_blank" class="proj-link">View on GitHub →</a>
+      <div class="p-title">Dugwell Detection — MGNREGA MP</div>
+      <div class="p-desc">MGNREGA needed a complete state-wide inventory of dugwells across MP for water conservation. Manual identification at this scale from satellite imagery was impossible.</div>
+      <div class="p-result">
+        <span class="p-result-icon">✦</span>
+        <span class="p-result-text">93% F1-score · YOLOv8 on 3,000+ WorldView tiles · All 55 MP districts · Auto-generated shapefiles per district</span>
+      </div>
+      <div class="p-tags"><span class="p-tag">YOLOv8</span><span class="p-tag">WorldView 0.3m</span><span class="p-tag">Roboflow</span><span class="p-tag">GDAL</span><span class="p-tag">GeoPandas</span><span class="p-tag">Python</span></div>
+      <a href="https://github.com/nitesh-bhadoriya/dugwell-detection-yolov8" target="_blank" class="p-link">View on GitHub →</a>
     </div>
 
     <div class="proj-card reveal">
-      <div class="proj-top">
-        <span class="proj-badge bt">SAR · Data Fusion</span>
-        <span class="proj-status">Research · MPSEDC</span>
+      <div class="p-top">
+        <span class="p-badge p-terra">SAR · Data Fusion</span>
+        <span class="p-status">Research · MPSEDC</span>
       </div>
-      <div class="proj-title">Soil Moisture Estimation — SAR + SMAP</div>
-      <div class="proj-desc">IoT soil sensors in rural MP are sparse and costly. Built an ML model estimating multi-layer soil moisture using freely available satellite and climate data.</div>
-      <div class="proj-result">R² 0.91 (train) · Sentinel-1 SAR + SMAP + CHIRPS fusion · Temporal encoding · Validated vs. IoT sensors in Sehore &amp; Khargone</div>
-      <div class="proj-pills"><span class="pill">Sentinel-1 SAR</span><span class="pill">SMAP (NASA)</span><span class="pill">Google Earth Engine</span><span class="pill">Random Forest</span><span class="pill">scikit-learn</span></div>
-      <a href="https://github.com/nitesh-bhadoriya/soil-moisture-estimation-sar-smap" target="_blank" class="proj-link">View on GitHub →</a>
+      <div class="p-title">Soil Moisture Estimation — SAR + SMAP</div>
+      <div class="p-desc">IoT soil sensors in rural MP are sparse and expensive. Built an ML model estimating multi-layer soil moisture using freely available satellite and climate data instead.</div>
+      <div class="p-result">
+        <span class="p-result-icon">✦</span>
+        <span class="p-result-text">R² 0.91 (train) · Sentinel-1 SAR + SMAP + CHIRPS fusion · Validated vs. IoT sensors in Sehore & Khargone</span>
+      </div>
+      <div class="p-tags"><span class="p-tag">Sentinel-1 SAR</span><span class="p-tag">SMAP</span><span class="p-tag">Google Earth Engine</span><span class="p-tag">Random Forest</span><span class="p-tag">scikit-learn</span></div>
+      <a href="https://github.com/nitesh-bhadoriya/soil-moisture-estimation-sar-smap" target="_blank" class="p-link">View on GitHub →</a>
     </div>
 
     <div class="proj-card reveal">
-      <div class="proj-top">
-        <span class="proj-badge bs">Hydrological Modeling</span>
-        <span class="proj-status">Production · REST API</span>
+      <div class="p-top">
+        <span class="p-badge p-sand">Hydrological Modeling</span>
+        <span class="p-status">Production · REST API</span>
       </div>
-      <div class="proj-title">HydroTrace — Watershed Delineation API</div>
-      <div class="proj-desc">Irrigation planners needed automated watershed boundary detection and downstream flow tracing from any clicked map point — without manual GIS work each time.</div>
-      <div class="proj-result">Click-to-trace downstream flow · DEM-driven delineation · FastAPI REST backend · Supports irrigation planning and flood assessment</div>
-      <div class="proj-pills"><span class="pill">DEM / SRTM</span><span class="pill">WhiteboxTools</span><span class="pill">FastAPI</span><span class="pill">PostGIS</span><span class="pill">Docker</span><span class="pill">GDAL</span></div>
-      <a href="https://github.com/nitesh-bhadoriya/hydrotrace-platform" target="_blank" class="proj-link">View on GitHub →</a>
+      <div class="p-title">HydroTrace — Watershed Delineation API</div>
+      <div class="p-desc">Irrigation planners needed automated watershed detection and downstream flow tracing from any clicked map point — eliminating manual GIS work for each query.</div>
+      <div class="p-result">
+        <span class="p-result-icon">✦</span>
+        <span class="p-result-text">Click-to-trace flow · DEM-driven delineation · FastAPI backend · Supports flood assessment & irrigation planning</span>
+      </div>
+      <div class="p-tags"><span class="p-tag">DEM / SRTM</span><span class="p-tag">WhiteboxTools</span><span class="p-tag">FastAPI</span><span class="p-tag">PostGIS</span><span class="p-tag">Docker</span></div>
+      <a href="https://github.com/nitesh-bhadoriya/hydrotrace-platform" target="_blank" class="p-link">View on GitHub →</a>
     </div>
 
     <div class="proj-card reveal">
-      <div class="proj-top">
-        <span class="proj-badge bg">GeoAI · Remote Sensing</span>
-        <span class="proj-status">In Progress · MPSEDC</span>
+      <div class="p-top">
+        <span class="p-badge p-green">GeoAI · Remote Sensing</span>
+        <span class="p-status">In Progress · MPSEDC</span>
       </div>
-      <div class="proj-title">LULC Classification — Madhya Pradesh</div>
-      <div class="proj-desc">Building an automated pipeline for district-wise Land Use Land Cover classification across all of Madhya Pradesh using object-based image analysis and machine learning.</div>
-      <div class="proj-result">OBIA pipeline · LISS-IV imagery (5.8m) · Random Forest &amp; SVM · District to state-scale output · GIS-ready maps with area statistics</div>
-      <div class="proj-pills"><span class="pill">LISS-IV</span><span class="pill">OTB</span><span class="pill">Random Forest</span><span class="pill">SVM</span><span class="pill">GDAL</span><span class="pill">GeoPandas</span><span class="pill">QGIS</span></div>
-      <a href="https://github.com/nitesh-bhadoriya/lulc-mp-classification" target="_blank" class="proj-link">View on GitHub →</a>
+      <div class="p-title">LULC Classification — Madhya Pradesh</div>
+      <div class="p-desc">Automating district-wise Land Use Land Cover classification across all of Madhya Pradesh, replacing slow and inconsistent manual GIS work with an OBIA + ML pipeline.</div>
+      <div class="p-result">
+        <span class="p-result-icon">✦</span>
+        <span class="p-result-text">OBIA pipeline · LISS-IV (5.8m) · Random Forest & SVM · State-scale output · GIS-ready maps with area stats</span>
+      </div>
+      <div class="p-tags"><span class="p-tag">LISS-IV</span><span class="p-tag">OTB</span><span class="p-tag">Random Forest</span><span class="p-tag">SVM</span><span class="p-tag">GDAL</span><span class="p-tag">QGIS</span></div>
+      <a href="https://github.com/nitesh-bhadoriya/lulc-mp-classification" target="_blank" class="p-link">View on GitHub →</a>
     </div>
 
   </div>
-</div></section>
+</div>
+</section>
 
-<div class="rule"></div>
+<div class="hr"></div>
 
-<section id="skills" class="skills-wrap"><div class="wrap">
-  <div class="reveal"><div class="sec-label">Capabilities</div><div class="sec-title">Tech Stack</div></div>
+<!-- SKILLS -->
+<section id="skills" class="section-alt">
+<div class="section">
+  <div class="reveal">
+    <div class="s-eyebrow">Capabilities</div>
+    <div class="s-title">Tech Stack</div>
+  </div>
   <div class="sk-grid">
-    <div class="sk-card reveal"><div class="sk-label">Computer Vision</div><div class="sk-tags"><span class="sk-tag">YOLOv8</span><span class="sk-tag">CNNs</span><span class="sk-tag">Transfer Learning</span><span class="sk-tag">OpenCV</span><span class="sk-tag">PyTorch</span></div></div>
-    <div class="sk-card reveal"><div class="sk-label">Remote Sensing</div><div class="sk-tags"><span class="sk-tag">Sentinel-1 SAR</span><span class="sk-tag">Sentinel-2</span><span class="sk-tag">LISS-IV</span><span class="sk-tag">WorldView</span><span class="sk-tag">SMAP</span><span class="sk-tag">DEM Analysis</span></div></div>
-    <div class="sk-card reveal"><div class="sk-label">Machine Learning</div><div class="sk-tags"><span class="sk-tag">Random Forest</span><span class="sk-tag">SVM</span><span class="sk-tag">Feature Engineering</span><span class="sk-tag">GridSearchCV</span><span class="sk-tag">scikit-learn</span><span class="sk-tag">TensorFlow</span></div></div>
-    <div class="sk-card reveal"><div class="sk-label">Geospatial Stack</div><div class="sk-tags"><span class="sk-tag">GDAL</span><span class="sk-tag">Rasterio</span><span class="sk-tag">GeoPandas</span><span class="sk-tag">PostGIS</span><span class="sk-tag">GeoServer</span><span class="sk-tag">OTB</span><span class="sk-tag">QGIS</span></div></div>
-    <div class="sk-card reveal"><div class="sk-label">Backend &amp; Infra</div><div class="sk-tags"><span class="sk-tag">FastAPI</span><span class="sk-tag">PostgreSQL</span><span class="sk-tag">Docker</span><span class="sk-tag">Linux</span><span class="sk-tag">JWT Auth</span><span class="sk-tag">GeoServer</span></div></div>
-    <div class="sk-card reveal"><div class="sk-label">Languages &amp; Tools</div><div class="sk-tags"><span class="sk-tag">Python</span><span class="sk-tag">SQL</span><span class="sk-tag">C++</span><span class="sk-tag">Google Earth Engine</span><span class="sk-tag">Git</span><span class="sk-tag">Roboflow</span></div></div>
+    <div class="sk-card reveal"><div class="sk-head">Computer Vision</div><div class="sk-chips"><span class="sk-chip">YOLOv8</span><span class="sk-chip">CNNs</span><span class="sk-chip">Transfer Learning</span><span class="sk-chip">OpenCV</span><span class="sk-chip">PyTorch</span></div></div>
+    <div class="sk-card reveal"><div class="sk-head">Remote Sensing</div><div class="sk-chips"><span class="sk-chip">Sentinel-1 SAR</span><span class="sk-chip">Sentinel-2</span><span class="sk-chip">LISS-IV</span><span class="sk-chip">WorldView</span><span class="sk-chip">SMAP</span><span class="sk-chip">DEM</span></div></div>
+    <div class="sk-card reveal"><div class="sk-head">Machine Learning</div><div class="sk-chips"><span class="sk-chip">Random Forest</span><span class="sk-chip">SVM</span><span class="sk-chip">Feature Engineering</span><span class="sk-chip">GridSearchCV</span><span class="sk-chip">scikit-learn</span><span class="sk-chip">TensorFlow</span></div></div>
+    <div class="sk-card reveal"><div class="sk-head">Geospatial Stack</div><div class="sk-chips"><span class="sk-chip">GDAL</span><span class="sk-chip">Rasterio</span><span class="sk-chip">GeoPandas</span><span class="sk-chip">PostGIS</span><span class="sk-chip">GeoServer</span><span class="sk-chip">OTB</span><span class="sk-chip">QGIS</span></div></div>
+    <div class="sk-card reveal"><div class="sk-head">Backend & Infra</div><div class="sk-chips"><span class="sk-chip">FastAPI</span><span class="sk-chip">PostgreSQL</span><span class="sk-chip">Docker</span><span class="sk-chip">Linux</span><span class="sk-chip">JWT Auth</span><span class="sk-chip">GeoServer</span></div></div>
+    <div class="sk-card reveal"><div class="sk-head">Languages & Tools</div><div class="sk-chips"><span class="sk-chip">Python</span><span class="sk-chip">SQL</span><span class="sk-chip">C++</span><span class="sk-chip">Google Earth Engine</span><span class="sk-chip">Git</span><span class="sk-chip">Roboflow</span></div></div>
   </div>
-</div></section>
+</div>
+</section>
 
-<div class="rule"></div>
+<div class="hr"></div>
 
-<section id="experience"><div class="wrap">
-  <div class="reveal"><div class="sec-label">Career</div><div class="sec-title">Experience</div></div>
+<!-- EXPERIENCE -->
+<section id="experience">
+<div class="section">
+  <div class="reveal">
+    <div class="s-eyebrow">Career</div>
+    <div class="s-title">Experience</div>
+  </div>
   <div class="exp-list">
 
     <div class="exp-row reveal">
-      <div><span class="exp-period">Dec 2024 — Present</span><span class="exp-co">MPSEDC</span><span class="exp-loc">Bhopal, Madhya Pradesh</span></div>
+      <div>
+        <span class="exp-when">Dec 2024 — Present</span>
+        <span class="exp-where">MPSEDC</span>
+        <span class="exp-place">Bhopal, Madhya Pradesh</span>
+      </div>
       <div>
         <div class="exp-role">AI &amp; ML Engineer</div>
         <div class="exp-pts">
           <div class="exp-pt">Built YOLOv8 dugwell detection model (93% F1) on WorldView imagery, deployed across all 55 MP districts for MGNREGA water conservation</div>
           <div class="exp-pt">Engineered soil moisture prediction model fusing Sentinel-1 SAR, SMAP, CHIRPS rainfall, and IoT field sensor data</div>
-          <div class="exp-pt">Built HydroTrace REST API for automated watershed delineation and click-based downstream flow tracing from DEM data</div>
-          <div class="exp-pt">Developing state-scale LULC classification pipeline using LISS-IV imagery and OBIA with Random Forest &amp; SVM</div>
+          <div class="exp-pt">Built HydroTrace REST API for automated watershed delineation and click-based downstream flow tracing from DEM</div>
+          <div class="exp-pt">Developing state-scale LULC classification pipeline using LISS-IV imagery, OBIA segmentation, Random Forest &amp; SVM</div>
         </div>
       </div>
     </div>
 
     <div class="exp-row reveal">
-      <div><span class="exp-period">2024 · Internship</span><span class="exp-co">MPSEDC</span><span class="exp-loc">Bhopal, Madhya Pradesh</span></div>
+      <div>
+        <span class="exp-when">2024 · Internship</span>
+        <span class="exp-where">MPSEDC</span>
+        <span class="exp-place">Bhopal, Madhya Pradesh</span>
+      </div>
       <div>
         <div class="exp-role">ML Intern</div>
         <div class="exp-pts">
@@ -421,7 +627,11 @@ footer {
     </div>
 
     <div class="exp-row reveal">
-      <div><span class="exp-period">2023 · Internship</span><span class="exp-co">IBM</span><span class="exp-loc">Remote</span></div>
+      <div>
+        <span class="exp-when">2023 · Internship</span>
+        <span class="exp-where">IBM</span>
+        <span class="exp-place">Remote</span>
+      </div>
       <div>
         <div class="exp-role">AI / ML Intern</div>
         <div class="exp-pts">
@@ -432,61 +642,65 @@ footer {
     </div>
 
   </div>
-</div></section>
+</div>
+</section>
 
-<section id="contact" class="contact-wrap"><div class="wrap">
-  <div class="sec-label reveal">Get in Touch</div>
-  <div class="sec-title reveal">Let's build something<br>meaningful together.</div>
-  <div class="contact-grid">
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+<div class="section">
+  <div class="s-eyebrow reveal">Get in Touch</div>
+  <div class="s-title reveal">Let's build something<br>meaningful together.</div>
+  <div class="c-grid">
     <div>
-      <p class="contact-desc">Open to roles in GeoAI, computer vision, remote sensing ML, and backend AI engineering. Remote, hybrid, and on-site opportunities across India welcome.</p>
-      <div class="contact-list">
-        <a href="mailto:niteshbhadoriya93@gmail.com" class="contact-item">
-          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><span class="ci-label">Email</span><span class="ci-val">niteshbhadoriya93@gmail.com</span></div>
+      <p class="c-desc">Open to roles in GeoAI, computer vision, remote sensing ML, and backend AI engineering. Remote, hybrid, and on-site opportunities across India welcome.</p>
+      <div class="c-links">
+        <a href="mailto:niteshbhadoriya93@gmail.com" class="c-link">
+          <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><span class="c-lbl">Email</span><span class="c-val">niteshbhadoriya93@gmail.com</span></div>
         </a>
-        <a href="https://www.linkedin.com/in/nitesh-singh-bhadoriya-917411226" target="_blank" class="contact-item">
-          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-          <div><span class="ci-label">LinkedIn</span><span class="ci-val">Nitesh Singh Bhadoriya</span></div>
+        <a href="https://www.linkedin.com/in/nitesh-singh-bhadoriya-917411226" target="_blank" class="c-link">
+          <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><span class="c-lbl">LinkedIn</span><span class="c-val">Nitesh Singh Bhadoriya</span></div>
         </a>
-        <a href="https://github.com/nitesh-bhadoriya" target="_blank" class="contact-item">
-          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-          <div><span class="ci-label">GitHub</span><span class="ci-val">github.com/nitesh-bhadoriya</span></div>
+        <a href="https://github.com/nitesh-bhadoriya" target="_blank" class="c-link">
+          <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+          <div><span class="c-lbl">GitHub</span><span class="c-val">github.com/nitesh-bhadoriya</span></div>
         </a>
       </div>
     </div>
-    <div class="cv-card reveal">
-      <div class="cv-title">Download my CV</div>
-      <div class="cv-desc">Full details of my experience, projects, skills, and education — ready for your review.</div>
-      <div class="cv-items">
-        <div class="cv-item">AI &amp; ML Engineer at MPSEDC (Dec 2024 – Present)</div>
-        <div class="cv-item">B.Tech CSE · CGPA 8.41 · RGPV Bhopal</div>
-        <div class="cv-item">4 production GeoAI systems deployed</div>
-        <div class="cv-item">NPTEL ML certification · IBM &amp; MPSEDC internships</div>
+    <div class="cv-panel reveal">
+      <div class="cv-panel-title">Download my CV</div>
+      <div class="cv-panel-desc">Full details of experience, projects, skills, and education — ready for your review.</div>
+      <div class="cv-list">
+        <div class="cv-li">AI &amp; ML Engineer at MPSEDC (Dec 2024 – Present)</div>
+        <div class="cv-li">B.Tech CSE · CGPA 8.41 · RGPV Bhopal</div>
+        <div class="cv-li">4 production GeoAI systems deployed</div>
+        <div class="cv-li">NPTEL ML · IBM &amp; MPSEDC internships</div>
       </div>
-      <a href="https://drive.google.com/file/d/1Ir9z8MPeFtudnD7okVRbF8rJ6qpm5BTQ/view?usp=sharing" target="_blank" class="cv-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <a href="https://drive.google.com/file/d/1Ir9z8MPeFtudnD7okVRbF8rJ6qpm5BTQ/view?usp=sharing" target="_blank" class="cv-dl">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download CV (PDF)
       </a>
     </div>
   </div>
-</div></section>
+</div>
+</section>
 
 <footer>
-  <span class="f-name">Nitesh Singh Bhadoriya</span>
-  <div class="f-links">
-    <a href="https://github.com/nitesh-bhadoriya" target="_blank" class="f-link">GitHub</a>
-    <a href="https://www.linkedin.com/in/nitesh-singh-bhadoriya-917411226" target="_blank" class="f-link">LinkedIn</a>
-    <a href="mailto:niteshbhadoriya93@gmail.com" class="f-link">Email</a>
+  <span class="f-n">Nitesh Singh Bhadoriya</span>
+  <div class="f-ls">
+    <a href="https://github.com/nitesh-bhadoriya" target="_blank" class="f-l">GitHub</a>
+    <a href="https://www.linkedin.com/in/nitesh-singh-bhadoriya-917411226" target="_blank" class="f-l">LinkedIn</a>
+    <a href="mailto:niteshbhadoriya93@gmail.com" class="f-l">Email</a>
   </div>
 </footer>
 
 <script>
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 80);
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 75);
   });
-}, { threshold: 0.07 });
+}, { threshold: 0.06 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
